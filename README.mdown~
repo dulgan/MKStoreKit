@@ -1,7 +1,5 @@
 #MKStoreKit
 
-This fork is only adding a method to the signleton to get the base 64 receipt to verify it on my own server before giving access to the content.
-
 An in-App Purchase framework for iOS 7.0+. **MKStoreKit** makes in-App Purchasing super simple by remembering your purchases, validating reciepts, and tracking virtual currencies (consumable purchases). Additionally, it keeps track of auto-renewable subscriptions and their expirationd dates. It couldn't be easier!
 
 ## Compatibility

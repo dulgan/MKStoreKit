@@ -270,5 +270,14 @@ extern NSString *const kMKStoreKitSubscriptionExpiredNotification;
  */
 - (void)setDefaultCredits:(NSNumber *)creditCount forConsumableIdentifier:(NSString *)consumableId;
 
+/*!
+ *  @abstract This method gets the app store receipt and encode it using base64 method
+ *
+ *  @discussion
+ *	This method could be used to send base64receipt to your own server to securely check
+ *  subsciptions for example, before giving access to remote data
+ *
+ */
+- (NSString *)getBase64ReceiptForProduct:(NSString *)productIdentifier;
 
 @end

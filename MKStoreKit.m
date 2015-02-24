@@ -478,4 +478,25 @@ static NSDictionary *errorDictionary;
                                                       object:transaction.payment.productIdentifier];
 }
 
+- (NSString *)getBase64ReceiptForProduct:(NSString *)productIdentifier {
+    NSString *base64Receipt = nil;
+    
+    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSError *receiptError;
+    BOOL isPresent = [receiptURL checkResourceIsReachableAndReturnError:&receiptError];
+    
+    if (!isPresent) {
+        // Validation fails, app is probably not authentic
+        return nil;
+    }
+    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
+    base64Receipt = [receiptData base64EncodedStringWithOptions:0];
+    if (!receiptData) {
+        // Validation fails
+        NSLog(@"Receipt exists but there is no data available. Try refreshing the reciept payload and then checking again.");
+        return nil;
+    }
+    
+    return base64Receipt;
+}
 @end
